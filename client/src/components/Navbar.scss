@@ -1,0 +1,42 @@
+@import "../sass/variables";
+
+// TODO
+.navbar {
+  position: absolute;
+  z-index: 100;
+  top: 3rem;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__logo-box {
+    margin-left: 3rem;
+    flex: 0 0 10%;
+  }
+
+  &__logo {
+  }
+  &__nav {
+    padding: 1rem 20rem 1rem 10rem;
+    background-color: rgba($clr-primary, 0.1);
+  }
+  &__list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0;
+  }
+  &__item {
+    &--selected {
+    }
+  }
+  &__link {
+  }
+  &__link-num {
+  }
+}

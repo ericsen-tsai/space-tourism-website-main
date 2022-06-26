@@ -1,13 +1,11 @@
+@import "./sass/components";
+
 *,
 **,
 **::after,
 **::before {
   box-sizing: border-box;
 }
-
-$font-family-primary: "Cormorant Garamond", serif;
-$font-family-secondary: "Barlow", sans-serif;
-$font-family-tatriy: "BIZ UDGothic", sans-serif;
 
 html,
 body {
@@ -18,5 +16,5 @@ body {
 
 #root {
   width: 100%;
-  margin: 100%;
+  height: 100%;
 }

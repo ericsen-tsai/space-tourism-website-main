@@ -1,15 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
-const Test = () => {
-  return <div>Test</div>
-}
+import Navbar from "./components/Navbar"
+import Home from "./pages/home/Home"
+
+import "./App.scss"
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <Navbar />
         <Routes>
-          <Route path="/" element={<Test />} />
+          <Route path="/" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
