@@ -1,6 +1,5 @@
 @import "../sass/variables";
 
-// TODO
 .navbar {
   position: absolute;
   z-index: 100;
@@ -17,26 +16,52 @@
     flex: 0 0 10%;
   }
 
-  &__logo {
-  }
   &__nav {
-    padding: 1rem 20rem 1rem 10rem;
-    background-color: rgba($clr-primary, 0.1);
+    padding: 0 10rem;
+    background-color: rgba($clr-primary, 0.05);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    position: relative;
   }
+
+  &__nav::after {
+    content: "";
+    width: 40%;
+    height: 0.01rem;
+    background: rgba(#fff, 0.3);
+    position: absolute;
+    top: 50%;
+    left: -18%;
+
+    transform: translate(-50%, -50%);
+  }
+
   &__list {
     list-style: none;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
     padding: 0;
+    // line-height: 0;
+    margin: 0;
   }
   &__item {
+    padding: 2rem 0;
     &--selected {
+      border-bottom: #fff solid 0.1rem;
     }
   }
   &__link {
+    text-decoration: none;
+    color: $clr-secondary;
+    font-family: $font-family-secondary;
+    letter-spacing: 0.1rem;
   }
-  &__link-num {
+  &__link-number {
+    margin-right: 0.5rem;
+    font-weight: 700;
+    letter-spacing: 0.3rem;
+    color: $clr-primary;
   }
 }

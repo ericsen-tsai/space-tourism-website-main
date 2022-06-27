@@ -1,8 +1,7 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 import "./Navbar.scss"
-
-import Logo from "../images/shared/logo.svg"
 
 const pages = ["home", "destination", "crew", "technology"]
 
@@ -11,13 +10,14 @@ const Navbar = ({ currentPage }) => {
     return pages.map((page, ind) => (
       <li
         className={`navbar__item ${
-          currentPage === "page" ? "navbar__item--selected" : ""
+          currentPage === page ? "navbar__item--selected" : ""
         }`}
+        key={page}
       >
-        <a href="#" className="navbar__link">
+        <Link to={page === "home" ? "/" : "/" + page} className="navbar__link">
           <span className="navbar__link-number">{`0${ind}`}</span>
           {page.toUpperCase()}
-        </a>
+        </Link>
       </li>
     ))
   }
@@ -25,7 +25,11 @@ const Navbar = ({ currentPage }) => {
   return (
     <nav className="navbar">
       <div className="navbar__logo-box">
-        <img src={Logo} alt="Logo" className="navbar__logo" />
+        <img
+          src="./images/shared/logo.svg"
+          alt="Logo"
+          className="navbar__logo"
+        />
       </div>
       <div className="navbar__nav">
         <ul className="navbar__list">{renderList()}</ul>
