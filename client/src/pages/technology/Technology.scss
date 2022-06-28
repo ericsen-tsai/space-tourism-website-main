@@ -1,0 +1,115 @@
+@import "../../sass/variables";
+
+.technology {
+  height: 100%;
+  width: 100%;
+  background-image: url(images/technology/background-technology-desktop.jpg);
+  background-size: cover;
+  color: $clr-primary;
+
+  display: flex;
+
+  &__info {
+    flex: 0 0 40%;
+    margin-top: 10rem;
+    margin-left: 15%;
+  }
+  &__info-title-box {
+    width: 100%;
+    margin-bottom: 8rem;
+  }
+
+  &__info-title {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 300;
+    font-family: $font-family-tertiary;
+    letter-spacing: 0.2rem;
+  }
+
+  &__info-number {
+    color: $clr-secondary;
+    font-family: $font-family-secondary;
+    letter-spacing: 0.5rem;
+    margin-right: 1rem;
+  }
+
+  &__content-box {
+    display: flex;
+    gap: 3rem;
+  }
+
+  &__option-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+  }
+
+  &__option {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: 0.1rem $clr-secondary solid;
+    position: relative;
+    color: $clr-primary;
+
+    &--selected {
+      background-color: $clr-primary;
+      color: $clr-secondary;
+    }
+  }
+
+  &__option-index {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-family: $font-family-secondary;
+    color: $clr-primary;
+  }
+
+  &__option--selected &__option-index {
+    color: black;
+  }
+
+  &__introduction {
+  }
+  &__terminology {
+    font-size: 0.8rem;
+    font-weight: 300;
+    font-family: $font-family-tertiary;
+    color: $clr-secondary;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  &__name {
+    text-transform: uppercase;
+    margin: 0;
+    font-size: 3.2rem;
+    font-weight: 300;
+    font-family: $font-family-primary;
+    color: $clr-primary;
+    width: 32rem;
+  }
+
+  &__description {
+    color: $clr-secondary;
+    font-family: $font-family-secondary;
+    word-spacing: 0.5rem;
+    width: 30rem;
+    line-height: 1.6;
+  }
+
+  &__img-box {
+    margin-top: 10rem;
+    margin-left: auto;
+    text-align: right;
+  }
+
+  &__img {
+  }
+}

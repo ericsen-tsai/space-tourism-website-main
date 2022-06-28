@@ -1,0 +1,92 @@
+@import "../../sass/variables";
+
+.crew {
+  width: 100%;
+  height: 100%;
+  background-image: url(images/crew/background-crew-desktop.jpg);
+  background-size: cover;
+  color: $clr-primary;
+
+  display: flex;
+
+  &__info {
+    flex: 0 0 40%;
+    margin-top: 10rem;
+    margin-left: 15%;
+  }
+
+  &__info-title-box {
+    width: 100%;
+    margin-bottom: 8rem;
+  }
+
+  &__info-title {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 300;
+    font-family: $font-family-tertiary;
+    letter-spacing: 0.2rem;
+  }
+
+  &__info-number {
+    color: $clr-secondary;
+    font-family: $font-family-secondary;
+    letter-spacing: 0.5rem;
+    margin-right: 1rem;
+  }
+
+  &__role {
+    text-transform: uppercase;
+    font-size: 2rem;
+    font-weight: 300;
+    font-family: $font-family-primary;
+    color: $clr-secondary;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  &__name {
+    text-transform: uppercase;
+    font-size: 3.2rem;
+    font-weight: 300;
+    font-family: $font-family-primary;
+    color: $clr-primary;
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  &__bio {
+    color: $clr-secondary;
+    font-family: $font-family-secondary;
+    font-weight: 300;
+    width: 50ch;
+    word-spacing: 0.3rem;
+    line-height: 1.5;
+    height: 5rem;
+    margin-bottom: 5rem;
+  }
+
+  &__option-box {
+    display: flex;
+    gap: 1.6rem;
+  }
+
+  &__option {
+    height: 0.8rem;
+    width: 0.8rem;
+    border-radius: 50%;
+    background-color: $clr-secondary;
+    cursor: pointer;
+
+    &--selected {
+      background-color: $clr-primary;
+    }
+  }
+  &__img-box {
+    margin-top: auto;
+  }
+
+  &__img {
+    width: 80%;
+  }
+}
