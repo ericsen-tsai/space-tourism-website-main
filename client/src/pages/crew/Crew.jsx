@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
+
+import { pageVariants } from "../../framer"
+
 import "./Crew.scss"
 
 const crews = [
@@ -45,6 +48,19 @@ const crews = [
   },
 ]
 
+const variants = {
+  initial: {
+    x: 20,
+    opacity: 0,
+    transition: { delay: 0.2, duration: 1 },
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: { delay: 0.2, duration: 1 },
+  },
+}
+
 const Crew = () => {
   const [crewInd, setCrewInd] = useState(0)
 
@@ -53,24 +69,27 @@ const Crew = () => {
     setCrewInd(Number(e.target.dataset.id))
   }
 
-  const renderList = () => {
+  const renderOptions = () => {
     return crews.map((crew, ind) => (
-      <div
+      <motion.div
         className={`crew__option ${
           crewInd === ind ? "crew__option--selected" : ""
         }`}
         data-id={ind}
         onClick={handleOnClick}
         key={crew.name}
-      ></div>
+        whileHover={{ scale: 1.1 }}
+      ></motion.div>
     ))
   }
 
   return (
     <motion.div
       className="crew"
-      animation={{ width: "100%" }}
-      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
     >
       <div className="crew__info">
         <div className="crew__info-title-box">
@@ -79,16 +98,44 @@ const Crew = () => {
             MEET YOUR CREW
           </h3>
         </div>
-        <h5 className="crew__role">{crews[crewInd].role}</h5>
-        <h1 className="crew__name">{crews[crewInd].name}</h1>
-        <p className="crew__bio">{crews[crewInd].bio}</p>
-        <div className="crew__option-box">{renderList()}</div>
+        <motion.h5
+          className="crew__role"
+          key={crews[crewInd].role}
+          initial="initial"
+          animate="animate"
+          variants={variants}
+        >
+          {crews[crewInd].role}
+        </motion.h5>
+        <motion.h1
+          className="crew__name"
+          key={crews[crewInd].name}
+          initial="initial"
+          animate="animate"
+          variants={variants}
+        >
+          {crews[crewInd].name}
+        </motion.h1>
+        <motion.p
+          className="crew__bio"
+          key={crews[crewInd].bio.slice(0, 10)}
+          initial="initial"
+          animate="animate"
+          variants={variants}
+        >
+          {crews[crewInd].bio}
+        </motion.p>
+        <div className="crew__option-box">{renderOptions()}</div>
       </div>
       <div className="crew__img-box">
-        <img
+        <motion.img
+          key={crews[crewInd].images.png}
           src={crews[crewInd].images.png}
           alt={crews[crewInd].name}
           className="crew__img"
+          initial="initial"
+          animate="animate"
+          variants={variants}
         />
       </div>
     </motion.div>

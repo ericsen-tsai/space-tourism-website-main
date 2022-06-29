@@ -1,14 +1,18 @@
 import React from "react"
 import { motion } from "framer-motion"
 
+import { pageVariants } from "../../framer"
+
 import "./Home.scss"
 
 const Home = () => {
   return (
     <motion.div
       className="home"
-      animation={{ width: "100%" }}
-      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
     >
       <div className="home__content">
         <div className="home__text-box">

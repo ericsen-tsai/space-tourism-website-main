@@ -1,5 +1,8 @@
 import React, { useState } from "react"
-import { motion } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion"
+
+import { pageVariants } from "../../framer"
+
 import "./Destination.scss"
 
 const destinations = [
@@ -49,6 +52,18 @@ const destinations = [
   },
 ]
 
+const variants = {
+  initial: {
+    x: -20,
+    opacity: 0,
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: { delay: 0.5, duration: 1 },
+  },
+}
+
 const Destination = () => {
   const [destinationInd, setDestinationInd] = useState(0)
 
@@ -59,24 +74,30 @@ const Destination = () => {
 
   const renderOptions = () => {
     return destinations.map((destination, ind) => (
-      <li
+      <motion.li
         className={`destination__item ${
           ind === destinationInd ? "destination__item--selected" : ""
         }`}
         key={destination.name}
+        whileHover={{
+          scale: 1.05,
+          transition: { delay: 0.1, duration: 0.5 },
+        }}
       >
         <p className="destination__link" onClick={handleOnClick} data-id={ind}>
           {destination.name}
         </p>
-      </li>
+      </motion.li>
     ))
   }
 
   return (
     <motion.div
       className="destination"
-      animation={{ width: "100%" }}
-      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
     >
       <div className="destination__content">
         <div className="destination__content-title-box">
@@ -85,35 +106,68 @@ const Destination = () => {
             PICK YOUR DESTINATION
           </h3>
         </div>
-        <img
-          src={destinations[destinationInd].images.png}
-          alt={destinations[destinationInd].name}
-          className="destination__img"
-        />
+        <AnimatePresence>
+          <motion.img
+            src={destinations[destinationInd].images.png}
+            alt={destinations[destinationInd].name}
+            className="destination__img"
+            key={destinations[destinationInd].images.png}
+            initial="initial"
+            animate="animate"
+            variants={variants}
+            exit={{ x: 20, opacity: 0 }}
+          />
+        </AnimatePresence>
       </div>
 
       <div className="destination__info">
         <nav className="destination__nav">
           <ul className="destination__list">{renderOptions()}</ul>
         </nav>
-        <h1 className="destination__name">
+        <motion.h1
+          className="destination__name"
+          key={destinations[destinationInd].name}
+          initial="initial"
+          animate="animate"
+          variants={variants}
+        >
           {destinations[destinationInd].name}
-        </h1>
-        <p className="destination__description">
+        </motion.h1>
+
+        <motion.p
+          className="destination__description"
+          key={destinations[destinationInd].description.slice(0, 10)}
+          initial="initial"
+          animate="animate"
+          variants={variants}
+        >
           {destinations[destinationInd].description}
-        </p>
+        </motion.p>
+
         <div className="destination__detail-box">
           <div className="destination__detail">
             <p className="destination__detail-title">AVG. DISTANCE</p>
-            <h5 className="destination__detail-value">
+            <motion.h5
+              className="destination__detail-value"
+              key={destinations[destinationInd].distance}
+              initial="initial"
+              animate="animate"
+              variants={variants}
+            >
               {destinations[destinationInd].distance}
-            </h5>
+            </motion.h5>
           </div>
           <div className="destination__detail">
             <p className="destination__detail-title">EST. TRAVEL TIME</p>
-            <h5 className="destination__detail-value">
+            <motion.h5
+              className="destination__detail-value"
+              key={destinations[destinationInd].travel}
+              initial="initial"
+              animate="animate"
+              variants={variants}
+            >
               {destinations[destinationInd].travel}
-            </h5>
+            </motion.h5>
           </div>
         </div>
       </div>

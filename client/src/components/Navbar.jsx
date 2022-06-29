@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react"
+import React from "react"
 import { Link } from "react-router-dom"
 import { motion, useCycle } from "framer-motion"
 
@@ -9,6 +9,12 @@ const pages = ["home", "destination", "crew", "technology"]
 const Navbar = ({ currentPage }) => {
   const [isOpen, toggleOpen] = useCycle(false, true)
 
+  const handleScrollToBottom = () => {
+    setTimeout(() => {
+      window.scrollTo(0, 0)
+    }, 1000)
+  }
+
   const renderList = () => {
     return pages.map((page, ind) => (
       <motion.li
@@ -17,7 +23,11 @@ const Navbar = ({ currentPage }) => {
         }`}
         key={page}
       >
-        <Link to={page === "home" ? "/" : "/" + page} className="navbar__link">
+        <Link
+          to={page === "home" ? "/" : "/" + page}
+          className="navbar__link"
+          onClick={handleScrollToBottom}
+        >
           <span className="navbar__link-number">{`0${ind}`}</span>
           {page.toUpperCase()}
         </Link>

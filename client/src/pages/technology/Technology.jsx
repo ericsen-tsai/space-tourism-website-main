@@ -1,5 +1,8 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
+
+import { pageVariants } from "../../framer"
+
 import "./Technology.scss"
 
 const technologies = [
@@ -32,6 +35,19 @@ const technologies = [
   },
 ]
 
+const variants = {
+  initial: {
+    x: 20,
+    opacity: 0,
+    transition: { delay: 0.2, duration: 1 },
+  },
+  animate: {
+    x: 0,
+    opacity: 1,
+    transition: { delay: 0.2, duration: 1 },
+  },
+}
+
 const Technology = () => {
   const [technologyInd, setTechnologyInd] = useState(0)
 
@@ -44,13 +60,15 @@ const Technology = () => {
     setTechnologyInd(Number(e.target.dataset.id))
   }
 
-  const renderList = () => {
+  const renderOptions = () => {
     return technologies.map((technology, ind) => (
-      <div
+      <motion.div
         className={`technology__option ${
           ind === technologyInd ? "technology__option--selected" : ""
         }`}
         key={technology.name}
+        whileHover={{ scale: 1.05 }}
+        transition={{ delay: 0.1, duration: 0.2 }}
       >
         <span
           className="technology__option-index"
@@ -59,15 +77,17 @@ const Technology = () => {
         >
           {ind + 1}
         </span>
-      </div>
+      </motion.div>
     ))
   }
 
   return (
     <motion.div
       className="technology"
-      animation={{ width: "100%" }}
-      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      variants={pageVariants}
     >
       <div className="technology__info">
         <div className="technology__info-title-box">
@@ -77,23 +97,39 @@ const Technology = () => {
           </h3>
         </div>
         <div className="technology__content-box">
-          <div className="technology__option-box">{renderList()}</div>
+          <div className="technology__option-box">{renderOptions()}</div>
           <div className="technology__introduction">
             <h5 className="technology__terminology">THE TERMINOLOGY...</h5>
-            <h1 className="technology__name">
+            <motion.h1
+              className="technology__name"
+              key={technologies[technologyInd].name}
+              initial="initial"
+              animate="animate"
+              variants={variants}
+            >
               {technologies[technologyInd].name}
-            </h1>
-            <p className="technology__description">
+            </motion.h1>
+            <motion.p
+              className="technology__description"
+              key={technologies[technologyInd].description}
+              initial="initial"
+              animate="animate"
+              variants={variants}
+            >
               {technologies[technologyInd].description}
-            </p>
+            </motion.p>
           </div>
         </div>
       </div>
       <div className="technology__img-box">
-        <img
+        <motion.img
           src={technologies[technologyInd].images.portrait}
           alt={technologies[technologyInd].name}
           className="technology__img"
+          key={technologies[technologyInd].images.portrait}
+          initial="initial"
+          animate="animate"
+          variants={variants}
         />
       </div>
     </motion.div>
