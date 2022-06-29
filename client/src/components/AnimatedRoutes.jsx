@@ -1,5 +1,6 @@
 import React from "react"
 import { Routes, Route, useLocation } from "react-router-dom"
+import { AnimatePresence } from "framer-motion"
 
 import Navbar from "./Navbar"
 import Home from "../pages/home/Home"
@@ -17,12 +18,14 @@ const AnimatedRoutes = () => {
           location.pathname === "/" ? "home" : location.pathname.split("/")[1]
         }
       />
-      <Routes location={location}>
-        <Route path="/" element={<Home />} />
-        <Route path="/destination" element={<Destination />} />
-        <Route path="/crew" element={<Crew />} />
-        <Route path="/technology" element={<Technology />} />
-      </Routes>
+      <AnimatePresence>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<Home />} />
+          <Route path="/destination" element={<Destination />} />
+          <Route path="/crew" element={<Crew />} />
+          <Route path="/technology" element={<Technology />} />
+        </Routes>
+      </AnimatePresence>
     </>
   )
 }

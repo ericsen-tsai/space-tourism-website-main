@@ -97,6 +97,7 @@
   &__item {
     padding: 2rem 0;
     border-bottom: transparent solid 0.1rem;
+    transition: all 0.1s 0.1s;
 
     @include respond(phone) {
       padding: 1rem 0;
@@ -112,6 +113,14 @@
         border-bottom: black solid 0.1rem;
       }
     }
+
+    &:hover {
+      border-bottom: #fff solid 0.1rem;
+
+      @include respond(phone) {
+        border-bottom: black solid 0.1rem;
+      }
+    }
   }
 
   &__link {
@@ -119,6 +128,7 @@
     color: $clr-secondary;
     font-family: $font-family-secondary;
     letter-spacing: 0.1rem;
+    transition: all 0.1s 0.1s;
 
     @include respond(tab-land) {
       color: $clr-primary;
@@ -126,6 +136,13 @@
 
     @include respond(phone) {
       color: black;
+    }
+  }
+
+  &__item:hover &__link {
+    color: rgba(rgb(184, 184, 184), 0.5);
+    @include respond(phone) {
+      color: rgba(black, 0.5);
     }
   }
 

@@ -1,10 +1,15 @@
 import React from "react"
+import { motion } from "framer-motion"
 
 import "./Home.scss"
 
 const Home = () => {
   return (
-    <div className="home">
+    <motion.div
+      className="home"
+      animation={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+    >
       <div className="home__content">
         <div className="home__text-box">
           <h2 className="title title--secondary">so, you want to travel to</h2>
@@ -20,7 +25,7 @@ const Home = () => {
       <div className="home__mark-box">
         <h2 className="home__mark">Explore</h2>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

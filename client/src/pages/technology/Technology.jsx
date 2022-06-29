@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import { motion } from "framer-motion"
 import "./Technology.scss"
 
 const technologies = [
@@ -64,7 +64,11 @@ const Technology = () => {
   }
 
   return (
-    <div className="technology">
+    <motion.div
+      className="technology"
+      animation={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+    >
       <div className="technology__info">
         <div className="technology__info-title-box">
           <h3 className="technology__info-title">
@@ -92,7 +96,7 @@ const Technology = () => {
           className="technology__img"
         />
       </div>
-    </div>
+    </motion.div>
   )
 }
 

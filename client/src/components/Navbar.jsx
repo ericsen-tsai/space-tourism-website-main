@@ -1,25 +1,17 @@
 import React, { useState, useRef, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { motion, useCycle } from "framer-motion"
 
 import "./Navbar.scss"
 
 const pages = ["home", "destination", "crew", "technology"]
 
 const Navbar = ({ currentPage }) => {
-  const [isDisplay, setIsDisplay] = useState(false)
-  const navRef = useRef()
-  const hamburgerRef = useRef()
-
-  useEffect(() => {
-    const style = getComputedStyle(hamburgerRef.current)
-    if (style.display === "none") return
-    if (isDisplay) navRef.current.style.display = "inline-block"
-    if (!isDisplay) navRef.current.style.display = "none"
-  }, [isDisplay])
+  const [isOpen, toggleOpen] = useCycle(false, true)
 
   const renderList = () => {
     return pages.map((page, ind) => (
-      <li
+      <motion.li
         className={`navbar__item ${
           currentPage === page ? "navbar__item--selected" : ""
         }`}
@@ -29,12 +21,12 @@ const Navbar = ({ currentPage }) => {
           <span className="navbar__link-number">{`0${ind}`}</span>
           {page.toUpperCase()}
         </Link>
-      </li>
+      </motion.li>
     ))
   }
 
   return (
-    <nav className="navbar">
+    <motion.nav className="navbar">
       <div className="navbar__logo-box">
         <img
           src="./images/shared/logo.svg"
@@ -45,22 +37,33 @@ const Navbar = ({ currentPage }) => {
       <div className="navbar__nav">
         <ul className="navbar__list">{renderList()}</ul>
       </div>
-      <div className="navbar__nav navbar__nav--mobile" ref={navRef}>
+
+      <motion.div
+        className="navbar__nav navbar__nav--mobile"
+        initial={{ opacity: 0, x: 300 }}
+        animate={
+          isOpen
+            ? { opacity: 1, x: 0, duration: 0.5 }
+            : { opacity: 0, x: 300, duration: 0.5 }
+        }
+        transition={{ duration: 0.5, type: "tween" }}
+      >
         <ul className="navbar__list">{renderList()}</ul>
         <div className="navbar__icon-box">
           <i
             className="navbar__icon navbar__icon--close"
-            onClick={() => setIsDisplay(false)}
+            onClick={toggleOpen}
           ></i>
         </div>
-      </div>
-      <div className="navbar__icon-box" ref={hamburgerRef}>
+      </motion.div>
+
+      <div className="navbar__icon-box">
         <i
           className="navbar__icon navbar__icon--hamburger"
-          onClick={() => setIsDisplay(true)}
+          onClick={toggleOpen}
         ></i>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
 

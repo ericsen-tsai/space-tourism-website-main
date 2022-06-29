@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-
+import { motion } from "framer-motion"
 import "./Crew.scss"
 
 const crews = [
@@ -67,7 +67,11 @@ const Crew = () => {
   }
 
   return (
-    <div className="crew">
+    <motion.div
+      className="crew"
+      animation={{ width: "100%" }}
+      exit={{ x: window.innerWidth, transition: { duration: 0.1 } }}
+    >
       <div className="crew__info">
         <div className="crew__info-title-box">
           <h3 className="crew__info-title">
@@ -87,7 +91,7 @@ const Crew = () => {
           className="crew__img"
         />
       </div>
-    </div>
+    </motion.div>
   )
 }
 
