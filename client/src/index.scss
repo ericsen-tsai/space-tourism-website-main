@@ -1,4 +1,5 @@
 @import "./sass/components";
+@import "./sass/mixins";
 
 *,
 **,
@@ -12,6 +13,15 @@ body {
   width: 100%;
   height: 100%;
   margin: 0;
+
+  @include respond(tab-land) {
+    height: auto;
+    font-size: 80%;
+  }
+
+  @include respond(phone) {
+    font-size: 75%;
+  }
 }
 
 #root {

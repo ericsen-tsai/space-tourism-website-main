@@ -1,4 +1,5 @@
 @import "../sass/variables";
+@import "../sass/mixins";
 
 .navbar {
   position: absolute;
@@ -11,6 +12,14 @@
   justify-content: space-between;
   align-items: center;
 
+  @include respond(tab-land) {
+    top: 0rem;
+  }
+
+  @include respond(phone) {
+    top: 3rem;
+  }
+
   &__logo-box {
     margin-left: 3rem;
     flex: 0 0 10%;
@@ -22,6 +31,37 @@
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     position: relative;
+
+    @include respond(tab-land) {
+      flex-shrink: 1;
+      padding: 0 3rem;
+    }
+
+    @include respond(phone) {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      background-color: rgba($clr-primary, 0.8);
+      z-index: 400;
+    }
+
+    &--mobile {
+      display: none;
+      @include respond(phone) {
+        display: inline-block;
+      }
+    }
+  }
+
+  &__nav--mobile &__list {
+    flex-direction: column;
+    height: 100vh;
+
+    @include respond(phone) {
+      display: inline-block;
+      margin-top: 5rem;
+    }
   }
 
   &__nav::after {
@@ -34,6 +74,10 @@
     left: -18%;
 
     transform: translate(-50%, -50%);
+
+    @include respond(tab-land) {
+      width: 0;
+    }
   }
 
   &__list {
@@ -43,25 +87,90 @@
     align-items: center;
     gap: 3rem;
     padding: 0;
-    // line-height: 0;
     margin: 0;
-  }
-  &__item {
-    padding: 2rem 0;
-    &--selected {
-      border-bottom: #fff solid 0.1rem;
+
+    @include respond(phone) {
+      display: none;
     }
   }
+
+  &__item {
+    padding: 2rem 0;
+    border-bottom: transparent solid 0.1rem;
+
+    @include respond(phone) {
+      padding: 1rem 0;
+      &:not(:last-child) {
+        margin-bottom: 2rem;
+      }
+    }
+
+    &--selected {
+      border-bottom: #fff solid 0.1rem;
+
+      @include respond(phone) {
+        border-bottom: black solid 0.1rem;
+      }
+    }
+  }
+
   &__link {
     text-decoration: none;
     color: $clr-secondary;
     font-family: $font-family-secondary;
     letter-spacing: 0.1rem;
+
+    @include respond(tab-land) {
+      color: $clr-primary;
+    }
+
+    @include respond(phone) {
+      color: black;
+    }
   }
+
   &__link-number {
     margin-right: 0.5rem;
     font-weight: 700;
     letter-spacing: 0.3rem;
     color: $clr-primary;
+
+    @include respond(tab-land) {
+      display: none;
+    }
+  }
+
+  &__icon-box {
+    margin-right: 3rem;
+    display: none;
+
+    @include respond(phone) {
+      display: inline-block;
+    }
+  }
+
+  &__icon {
+    display: inline-block;
+    height: 2.5rem;
+    width: 2.5rem;
+    margin: 0;
+    padding: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    cursor: pointer;
+
+    &--hamburger {
+      background-image: url(images/shared/icon-hamburger.svg);
+    }
+
+    &--close {
+      position: absolute;
+      height: 1rem;
+      width: 1rem;
+      top: 2rem;
+      right: 2rem;
+      background-image: url(images/shared/icon-close.svg);
+      filter: brightness(0.4);
+    }
   }
 }

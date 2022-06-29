@@ -1,4 +1,5 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .crew {
   width: 100%;
@@ -9,15 +10,36 @@
 
   display: flex;
 
+  @include respond(tab-land) {
+    background-image: url(images/crew/background-crew-tablet.jpg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 3rem;
+  }
+
+  @include respond(phone) {
+    background-image: url(images/crew/background-crew-mobile.jpg);
+  }
+
   &__info {
     flex: 0 0 40%;
     margin-top: 10rem;
     margin-left: 15%;
+
+    @include respond(tab-land) {
+      margin-left: 0;
+    }
   }
 
   &__info-title-box {
     width: 100%;
     margin-bottom: 8rem;
+
+    @include respond(tab-land) {
+      margin-bottom: 2rem;
+    }
   }
 
   &__info-title {
@@ -26,6 +48,10 @@
     font-weight: 300;
     font-family: $font-family-tertiary;
     letter-spacing: 0.2rem;
+
+    @include respond(tab-land) {
+      display: none;
+    }
   }
 
   &__info-number {
@@ -64,11 +90,20 @@
     line-height: 1.5;
     height: 5rem;
     margin-bottom: 5rem;
+
+    @include respond(tab-land) {
+      margin: 1rem auto 5rem auto;
+      width: 25rem;
+    }
   }
 
   &__option-box {
     display: flex;
     gap: 1.6rem;
+
+    @include respond(tab-land) {
+      justify-content: center;
+    }
   }
 
   &__option {

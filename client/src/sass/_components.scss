@@ -1,4 +1,5 @@
 @import "./variables";
+@import "../sass/mixins";
 
 .title {
   text-transform: uppercase;
@@ -25,4 +26,8 @@
   text-align: justify;
   line-height: 2;
   font-size: 1.2rem;
+
+  @include respond(tab-land) {
+    text-align: center;
+  }
 }

@@ -1,4 +1,5 @@
 @import "../../sass/variables";
+@import "../../sass/mixins";
 
 .destination {
   width: 100%;
@@ -9,10 +10,26 @@
 
   display: flex;
 
+  @include respond(tab-land) {
+    background-image: url(images/destination/background-destination-tablet.jpg);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  @include respond(phone) {
+    background-image: url(images/destination/background-destination-mobile.jpg);
+  }
+
   &__content {
     flex: 0 0 40%;
     margin-top: 10rem;
     margin-left: 15%;
+
+    @include respond(tab-land) {
+      margin-left: 0;
+    }
   }
 
   &__content-title-box {
@@ -26,6 +43,10 @@
     font-weight: 300;
     font-family: $font-family-tertiary;
     letter-spacing: 0.2rem;
+
+    @include respond(tab-land) {
+      display: none;
+    }
   }
 
   &__content-number {
@@ -36,16 +57,25 @@
     margin-right: 1rem;
   }
 
-  // &__img {
-  //   width: 75%;
-  // }
+  &__img {
+    @include respond(tab-land) {
+      width: 25rem;
+    }
+  }
 
   &__info {
     flex: 0 0 30%;
     margin-top: 12rem;
-  }
 
-  &__nav {
+    @include respond(tab-land) {
+      margin-top: 1rem;
+      width: 50%;
+      margin-bottom: 10rem;
+    }
+
+    @include respond(phone) {
+      width: 25rem;
+    }
   }
 
   &__list {
@@ -56,6 +86,10 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    @include respond(tab-land) {
+      justify-content: center;
+    }
   }
   &__item {
     padding: 0.5rem 0;
@@ -93,11 +127,16 @@
     line-height: 1.5;
     margin-bottom: 3rem;
   }
+
   &__detail-box {
     display: flex;
     align-items: center;
     gap: 5rem;
     border-top: 0.1rem rgba($clr-secondary, 0.2) solid;
+
+    @include respond(tab-land) {
+      justify-content: center;
+    }
   }
 
   &__detail {
