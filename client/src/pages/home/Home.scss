@@ -4,14 +4,18 @@
 .home {
   width: 100%;
   height: 100%;
-  background-image: url(./images/home/background-home-desktop.jpg);
+  background-image: url(images/home/background-home-desktop.jpg);
   background-size: cover;
   display: flex;
 
   @include respond(tab-land) {
-    background-image: url(./images/home/background-home-tablet.jpg);
+    background-image: url(images/home/background-home-tablet.jpg);
     flex-direction: column;
     gap: 5rem;
+  }
+
+  @include respond(phone) {
+    background-image: url(images/technology/background-home-mobile.jpg);
   }
 
   &__content {

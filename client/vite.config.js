@@ -7,4 +7,7 @@ export default defineConfig({
   server: {
     open: "http://localhost:3000",
   },
+  build: {
+    assetsDir: ".",
+  },
 })
