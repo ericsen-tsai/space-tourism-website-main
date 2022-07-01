@@ -1,0 +1,20 @@
+{
+  "name": "space-tourism-website-main",
+  "version": "1.0.0",
+  "description": "space-tourism-website-main",
+  "scripts": {
+    "install": "cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericsen-tsai/space-tourism-website-main.git"
+  },
+  "author": "Ericsen Tsai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ericsen-tsai/space-tourism-website-main/issues"
+  },
+  "homepage": "https://github.com/ericsen-tsai/space-tourism-website-main#readme"
+}
